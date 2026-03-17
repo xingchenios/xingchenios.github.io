@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>帮助中心 - give me</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!-- 顶部导航 -->
+<header class="header">
+    <div class="container">
+        <nav class="nav">
+            <div class="logo">
+                <div class="logo-icon">GM</div>
+                <div class="logo-text">give me</div>
+            </div>
+
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">首页</a>
+                <a href="data-structure.html" class="nav-link">数据结构</a>
+                <a href="custom-algorithm.html" class="nav-link">自定义算法</a>
+                <a href="online-judge.html" class="nav-link">在线评测</a>
+                <a href="choice-question.html" class="nav-link">选择题库</a>
+                <a href="learning-path.html" class="nav-link">学习路径</a>
+                <a href="knowledge.html" class="nav-link">知识点讲解</a>
+                <a href="community.html" class="nav-link">社区问答</a>
+                <a href="other-courses.html" class="nav-link">其他课程</a>
+            </div>
+
+            <div class="user-profile" onclick="window.location.href='profile.html'">
+                <span>👤</span>
+                <span>wlOkzF7sCEC5</span>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<!-- 主体内容 -->
+<main class="container page">
+    <div class="page-header">
+        <h1 class="page-title">帮助中心</h1>
+        <p class="page-desc">解答你在使用平台过程中遇到的各种问题</p>
+    </div>
+
+    <div class="help-container">
+        <!-- 侧边栏 -->
+        <div class="help-sidebar">
+            <h3 class="sidebar-title">使用指南</h3>
+            <div class="sidebar-menu">
+                <a href="#basic-usage" class="sidebar-link active">基础使用</a>
+                <a href="#editor-usage" class="sidebar-link">代码编辑器</a>
+                <a href="#visual-usage" class="sidebar-link">可视化功能</a>
+                <a href="#judge-usage" class="sidebar-link">在线评测</a>
+                <a href="#error-book" class="sidebar-link">错题本使用</a>
+            </div>
+
+            <h3 class="sidebar-title" style="margin-top: 24px">常见问题</h3>
+            <div class="sidebar-menu">
+                <a href="#common-issues" class="sidebar-link">常见问题解答</a>
+                <a href="#browser-issues" class="sidebar-link">浏览器兼容</a>
+                <a href="#contact-us" class="sidebar-link">联系我们</a>
+            </div>
+        </div>
+
+        <!-- 帮助内容 -->
+        <div class="help-content">
+            <!-- 基础使用 -->
+            <section id="basic-usage" class="content-section">
+                <h2 class="section-subtitle">基础使用指南</h2>
+                <div class="faq-item">
+                    <h3 class="faq-question">1. 如何开始使用平台？</h3>
+                    <div class="faq-answer">
+                        <p>首次访问平台会自动弹出新手引导，你可以按照引导了解平台的核心功能。也可以点击顶部导航栏的「学习路径」，根据自己的学习阶段选择对应的路径开始学习。</p>
+                        <p>推荐学习流程：</p>
+                        <ol style="margin-left: 24px; margin-top: 8px;">
+                            <li>通过「知识点讲解」学习理论知识</li>
+                            <li>在「数据结构」页面查看可视化演示</li>
+                            <li>在「自定义算法」页面编写和运行代码</li>
+                            <li>在「在线评测」页面完成练习题巩固所学</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">2. 如何切换学习路径？</h3>
+                    <div class="faq-answer">
+                        <p>点击顶部导航栏的「学习路径」，进入学习路径页面后，可以在页面上方的路径选择栏中切换不同的学习路径（零基础入门、考研复习、算法竞赛、求职面试）。</p>
+                        <p>每个路径都有详细的学习节点和对应的知识点、练习题，你可以根据自己的学习目标选择合适的路径。</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">3. 如何查看我的学习进度？</h3>
+                    <div class="faq-answer">
+                        <p>点击右上角的用户头像进入「个人中心」，在「学习概览」中可以查看已学知识点、完成题目数、提交代码数、学习时长等数据。</p>
+                        <p>同时，在「选择题库」页面也能看到各知识点的学习进度条，帮助你了解自己的掌握情况。</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 代码编辑器使用 -->
+            <section id="editor-usage" class="content-section">
+                <h2 class="section-subtitle">代码编辑器使用指南</h2>
+                <div class="faq-item">
+                    <h3 class="faq-question">1. 如何切换编程语言？</h3>
+                    <div class="faq-answer">
+                        <p>在「自定义算法」页面的代码编辑器上方，有一个语言选择下拉框，支持Python、JavaScript、C、Java四种语言切换。切换后编辑器会自动加载对应语言的示例代码。</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">2. 如何运行代码并查看结果？</h3>
+                    <div class="faq-answer">
+                        <p>步骤如下：</p>
+                        <ol style="margin-left: 24px;">
+                            <li>在代码编辑器中编写或修改代码</li>
+                            <li>如需输入测试用例，在左侧「输入测试用例」文本框中填写</li>
+                            <li>点击「运行代码」按钮</li>
+                            <li>右侧「运行结果」区域会显示代码的执行结果</li>
+                        </ol>
+                        <p>运行结果会标注成功/失败状态，并显示对应的输出内容或错误信息。</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">3. 如何保存我的代码？</h3>
+                    <div class="faq-answer">
+                        <p>点击代码编辑器右上角的「保存」按钮（💾图标），代码会自动保存到你的个人账户中。你可以在「个人中心」->「我的代码」中查看所有保存的代码。</p>
+                        <p>保存的代码会记录编程语言、创建时间和最后修改时间，方便你后续查看和编辑。</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 常见问题 -->
+            <section id="common-issues" class="content-section">
+                <h2 class="section-subtitle">常见问题解答</h2>
+                <div class="faq-item">
+                    <h3 class="faq-question">1. 代码运行失败怎么办？</h3>
+                    <div class="faq-answer">
+                        <p>代码运行失败通常有以下原因：</p>
+                        <ul style="margin-left: 24px;">
+                            <li>语法错误：检查代码的语法是否符合对应编程语言的规范</li>
+                            <li>逻辑错误：检查算法逻辑是否正确，边界条件是否处理</li>
+                            <li>输入格式错误：检查测试用例的输入格式是否符合题目要求</li>
+                        </ul>
+                        <p>运行结果区域会显示具体的错误信息，你可以根据错误提示修改代码。如果仍无法解决，可以在「社区问答」中提问寻求帮助。</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">2. 可视化动画无法正常显示？</h3>
+                    <div class="faq-answer">
+                        <p>请检查：</p>
+                        <ul style="margin-left: 24px;">
+                            <li>浏览器是否开启了JavaScript（必须开启）</li>
+                            <li>是否使用了过时的浏览器版本（推荐使用Chrome、Edge、Firefox最新版）</li>
+                            <li>网络是否正常，页面资源是否加载完成</li>
+                        </ul>
+                        <p>如仍有问题，可以尝试刷新页面或清除浏览器缓存。</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">3. 如何将错题从错题本中移除？</h3>
+                    <div class="faq-answer">
+                        <p>在「选择题库」页面的「我的错题本」区域，找到需要移除的错题，点击右侧的「删除」按钮即可。删除后的错题不会再出现在错题本中，但不会影响你的学习记录。</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 联系我们 -->
+            <section id="contact-us" class="content-section">
+                <h2 class="section-subtitle">联系我们</h2>
+                <div class="faq-answer">
+                    <p>如果你在使用过程中遇到问题，或有任何建议，可以通过以下方式联系我们：</p>
+                    <ul style="margin-left: 24px; line-height: 2;">
+                        <li>社区提问：在「社区问答」板块发布问题，我们会尽快回复</li>
+                        <li>邮箱联系：support@giveme.example.com</li>
+                        <li>反馈表单：平台底部的意见反馈入口</li>
+                    </ul>
+                    <p>工作时间：周一至周五 9:00-18:00，周末和节假日会延迟回复。</p>
+                </div>
+            </section>
+        </div>
+    </div>
+</main>
+
+<!-- 页脚 -->
+<footer class="footer">
+    <div class="container footer-content">
+        <div class="footer-logo">
+            <div class="logo-icon">GM</div>
+            <div class="footer-logo-text">give me</div>
+        </div>
+
+        <div class="footer-links">
+            <a href="help.html" class="footer-link">使用帮助</a>
+            <a href="#" class="footer-link">用户协议</a>
+            <a href="#" class="footer-link">隐私政策</a>
+            <a href="community.html" class="footer-link">联系我们</a>
+        </div>
+
+        <div class="footer-copyright">
+            © 2025 give me 算法可视化平台 版权所有
+        </div>
+    </div>
+</footer>
+
+<script src="js/common.js"></script>
+<script>
+    // 帮助中心页面交互
+    document.addEventListener('DOMContentLoaded', () => {
+      // 侧边栏导航点击事件
+      const helpLinks = document.querySelectorAll('.sidebar-link');
+      helpLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+
+          // 移除所有active类
+          helpLinks.forEach(item => item.classList.remove('active'));
+          // 添加当前active类
+          link.classList.add('active');
+
+          // 滚动到对应区域
+          const targetId = link.getAttribute('href').substring(1);
+          const targetElement = document.getElementById(targetId);
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      });
+    });
+</script>
+</body>
+</html>

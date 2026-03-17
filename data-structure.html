@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据结构 - give me 算法可视化平台</title>
+    <style>
+        /* 全局样式重置 */
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: "Microsoft Yahei", "PingFang SC", sans-serif;
+        }
+
+        body {
+          background-color: #f5f7fa;
+          color: #333;
+          line-height: 1.6;
+        }
+
+        .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 20px;
+        }
+
+        /* 顶部导航栏（和首页一致） */
+        .header {
+          background-color: #ffffff;
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+          padding: 16px 0;
+          position: sticky;
+          top: 0;
+          z-index: 100;
+        }
+
+        .nav {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .logo {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+
+        .logo-icon {
+          width: 40px;
+          height: 40px;
+          background: linear-gradient(135deg, #4f75e0, #36d1dc);
+          color: #fff;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 18px;
+          font-weight: bold;
+        }
+
+        .logo-text {
+          font-size: 24px;
+          font-weight: 600;
+          background: linear-gradient(135deg, #4f75e0, #36d1dc);
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+        }
+
+        .nav-menu {
+          display: flex;
+          gap: 32px;
+        }
+
+        .nav-link {
+          text-decoration: none;
+          color: #64748b;
+          font-size: 15px;
+          font-weight: 500;
+          padding: 8px 0;
+          position: relative;
+          transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+          color: #4f75e0;
+        }
+
+        .nav-link.active {
+          color: #4f75e0;
+        }
+
+        .nav-link.active::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          background-color: #4f75e0;
+          border-radius: 2px;
+        }
+
+        .user-profile {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 8px 16px;
+          background-color: #f5f7fa;
+          border-radius: 24px;
+          cursor: pointer;
+          color: #64748b;
+          font-size: 14px;
+        }
+
+        /* 页面主体 */
+        .page {
+          padding: 60px 0;
+        }
+
+        .page-header {
+          margin-bottom: 40px;
+        }
+
+        .page-title {
+          font-size: 32px;
+          font-weight: 600;
+          color: #1e293b;
+          margin-bottom: 8px;
+        }
+
+        .page-desc {
+          font-size: 16px;
+          color: #64748b;
+        }
+
+        /* 折叠面板样式（完全匹配你的截图） */
+        .accordion {
+          max-width: 900px;
+          margin: 0 auto;
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+        }
+
+        .accordion-item {
+          background: #ffffff;
+          border-radius: 10px;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+          overflow: hidden;
+        }
+
+        .accordion-header {
+          width: 100%;
+          padding: 18px 24px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          background: #ffffff;
+          border: none;
+          font-size: 20px;
+          font-weight: 500;
+          color: #1e293b;
+          cursor: pointer;
+          transition: background 0.2s;
+          text-align: left;
+        }
+
+        .accordion-header:hover {
+          background: #f8fafc;
+        }
+
+        /* 蓝色圆形箭头（默认向下） */
+        .accordion-icon {
+          width: 28px;
+          height: 28px;
+          border-radius: 50%;
+          background: #4f75e0;
+          color: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 16px;
+          transition: transform 0.3s;
+        }
+
+        /* 展开时箭头旋转向上 */
+        .accordion-item.active .accordion-icon {
+          transform: rotate(180deg);
+        }
+
+        /* 面板内容（默认隐藏） */
+        .accordion-content {
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .accordion-item.active .accordion-content {
+          max-height: 500px;
+          padding: 16px 24px 24px;
+        }
+
+        /* 内容列表样式 */
+        .accordion-list {
+          list-style: none;
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+          gap: 10px;
+        }
+
+        .accordion-list li {
+          padding: 10px 14px;
+          background: #f8fafc;
+          border-radius: 6px;
+          color: #64748b;
+          font-size: 15px;
+        }
+
+        .problem-link {
+          text-decoration: none;
+          color: inherit;
+        }
+
+        .problem-link:hover {
+          color: #4f75e0;
+        }
+    </style>
+</head>
+<body>
+<!-- 顶部导航栏（和首页完全一致） -->
+<header class="header">
+    <div class="container">
+        <nav class="nav">
+            <div class="logo">
+                <div class="logo-icon">GM</div>
+                <div class="logo-text">give me</div>
+            </div>
+
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">首页</a>
+                <a href="data-structure.html" class="nav-link active">数据结构</a>
+                <a href="custom-algorithm.html" class="nav-link">自定义算法</a>
+                <a href="online-judge.html" class="nav-link">在线评测</a>
+                <a href="choice-question.html" class="nav-link">选择题库</a>
+                <a href="learning-path.html" class="nav-link">学习路径</a>
+                <a href="knowledge.html" class="nav-link">知识点讲解</a>
+                <a href="community.html" class="nav-link">社区问答</a>
+                <a href="other-courses.html" class="nav-link">其他课程</a>
+            </div>
+
+            <div class="user-profile">
+                <span>👤</span>
+                <span>wlOkzF7sCEC5</span>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<!-- 数据结构页面主体 -->
+<main class="container page">
+    <div class="page-header">
+        <h1 class="page-title">数据结构可视化</h1>
+        <p class="page-desc">通过动画演示理解各类数据结构的原理和操作</p>
+    </div>
+
+    <!-- 折叠面板（全部默认收起+蓝色圆形箭头） -->
+    <div class="accordion">
+        <!-- 线性表 -->
+        <div class="accordion-item">
+            <button class="accordion-header">
+                线性表
+                <span class="accordion-icon">▼</span>
+            </button>
+            <div class="accordion-content">
+                <ul class="accordion-list">
+                    <li><a href="knowledge.html#linear-list" class="problem-link">顺序表（数组）- 取值、查找、插入、删除</a></li>
+                    <li><a href="knowledge.html#single-linked-list" class="problem-link">单链表 - 遍历、插入、删除、逆转</a></li>
+                    <li><a href="knowledge.html#double-linked-list" class="problem-link">双向链表 - 遍历、插入、删除</a></li>
+                    <li><a href="knowledge.html#circular-linked-list" class="problem-link">循环链表 - 遍历、约瑟夫环问题</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 栈和队列 -->
+        <div class="accordion-item">
+            <button class="accordion-header">
+                栈和队列
+                <span class="accordion-icon">▼</span>
+            </button>
+            <div class="accordion-content">
+                <ul class="accordion-list">
+                    <li><a href="knowledge.html#stack" class="problem-link">顺序栈 - 入栈、出栈、括号匹配</a></li>
+                    <li><a href="knowledge.html#link-stack" class="problem-link">链栈 - 入栈、出栈</a></li>
+                    <li><a href="knowledge.html#queue" class="problem-link">循环队列 - 入队、出队</a></li>
+                    <li><a href="knowledge.html#link-queue" class="problem-link">链队列 - 入队、出队</a></li>
+                    <li><a href="knowledge.html#stack-application" class="problem-link">栈的应用 - 表达式求值、迷宫求解</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 字符串 -->
+        <div class="accordion-item">
+            <button class="accordion-header">
+                字符串
+                <span class="accordion-icon">▼</span>
+            </button>
+            <div class="accordion-content">
+                <ul class="accordion-list">
+                    <li><a href="knowledge.html#string-match" class="problem-link">字符串匹配 - 暴力匹配</a></li>
+                    <li><a href="knowledge.html#kmp" class="problem-link">KMP算法 - 模式匹配</a></li>
+                    <li><a href="knowledge.html#string-operation" class="problem-link">字符串替换、拼接、分割</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 树和二叉树 -->
+        <div class="accordion-item">
+            <button class="accordion-header">
+                树和二叉树
+                <span class="accordion-icon">▼</span>
+            </button>
+            <div class="accordion-content">
+                <ul class="accordion-list">
+                    <li><a href="knowledge.html#binary-tree" class="problem-link">二叉树 - 前序、中序、后序遍历</a></li>
+                    <li><a href="knowledge.html#level-order" class="problem-link">二叉树 - 层序遍历</a></li>
+                    <li><a href="knowledge.html#binary-sort-tree" class="problem-link">二叉排序树 - 插入、删除、查找</a></li>
+                    <li><a href="knowledge.html#avl-tree" class="problem-link">平衡二叉树（AVL）- 旋转调整</a></li>
+                    <li><a href="knowledge.html#huffman-tree" class="problem-link">哈夫曼树 - 构建、编码</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 图 -->
+        <div class="accordion-item">
+            <button class="accordion-header">
+                图
+                <span class="accordion-icon">▼</span>
+            </button>
+            <div class="accordion-content">
+                <ul class="accordion-list">
+                    <li><a href="knowledge.html#adjacency-matrix" class="problem-link">邻接矩阵 - 图的存储</a></li>
+                    <li><a href="knowledge.html#adjacency-list" class="problem-link">邻接表 - 图的存储</a></li>
+                    <li><a href="knowledge.html#dfs" class="problem-link">深度优先搜索（DFS）</a></li>
+                    <li><a href="knowledge.html#bfs" class="problem-link">广度优先搜索（BFS）</a></li>
+                    <li><a href="knowledge.html#dijkstra" class="problem-link">最短路径 - Dijkstra算法</a></li>
+                    <li><a href="knowledge.html#min-span-tree" class="problem-link">最小生成树 - Prim算法、Kruskal算法</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 查找 -->
+        <div class="accordion-item">
+            <button class="accordion-header">
+                查找
+                <span class="accordion-icon">▼</span>
+            </button>
+            <div class="accordion-content">
+                <ul class="accordion-list">
+                    <li><a href="knowledge.html#sequential-search" class="problem-link">顺序查找</a></li>
+                    <li><a href="knowledge.html#binary-search" class="problem-link">折半查找（二分查找）</a></li>
+                    <li><a href="knowledge.html#block-search" class="problem-link">分块查找</a></li>
+                    <li><a href="knowledge.html#hash-search" class="problem-link">哈希查找 - 构造、冲突处理</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 排序 -->
+        <div class="accordion-item">
+            <button class="accordion-header">
+                排序
+                <span class="accordion-icon">▼</span>
+            </button>
+            <div class="accordion-content">
+                <ul class="accordion-list">
+                    <li><a href="knowledge.html#bubble-sort" class="problem-link">冒泡排序 - 基础版、优化版</a></li>
+                    <li><a href="knowledge.html#selection-sort" class="problem-link">选择排序</a></li>
+                    <li><a href="knowledge.html#insertion-sort" class="problem-link">插入排序 - 直接插入、希尔排序</a></li>
+                    <li><a href="knowledge.html#quick-sort" class="problem-link">快速排序</a></li>
+                    <li><a href="knowledge.html#merge-sort" class="problem-link">归并排序</a></li>
+                    <li><a href="knowledge.html#heap-sort" class="problem-link">堆排序</a></li>
+                    <li><a href="knowledge.html#radix-sort" class="problem-link">基数排序</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+    // 折叠面板交互逻辑
+    document.addEventListener('DOMContentLoaded', function() {
+      const accordionItems = document.querySelectorAll('.accordion-item');
+      accordionItems.forEach(item => {
+        const header = item.querySelector('.accordion-header');
+        const icon = item.querySelector('.accordion-icon');
+
+        header.addEventListener('click', () => {
+          // 关闭其他所有面板
+          accordionItems.forEach(otherItem => {
+            if (otherItem !== item) {
+              otherItem.classList.remove('active');
+              otherItem.querySelector('.accordion-icon').textContent = '▼';
+            }
+          });
+
+          // 切换当前面板
+          item.classList.toggle('active');
+          icon.textContent = item.classList.contains('active') ? '▲' : '▼';
+        });
+      });
+    });
+</script>
+</body>
+</html>

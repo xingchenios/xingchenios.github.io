@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学习路径 - give me</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!-- 顶部导航 -->
+<header class="header">
+    <div class="container">
+        <nav class="nav">
+            <div class="logo">
+                <div class="logo-icon">GM</div>
+                <div class="logo-text">give me</div>
+            </div>
+
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">首页</a>
+                <a href="data-structure.html" class="nav-link">数据结构</a>
+                <a href="custom-algorithm.html" class="nav-link">自定义算法</a>
+                <a href="online-judge.html" class="nav-link">在线评测</a>
+                <a href="choice-question.html" class="nav-link">选择题库</a>
+                <a href="learning-path.html" class="nav-link active">学习路径</a>
+                <a href="knowledge.html" class="nav-link">知识点讲解</a>
+                <a href="community.html" class="nav-link">社区问答</a>
+                <a href="other-courses.html" class="nav-link">其他课程</a>
+            </div>
+
+            <div class="user-profile" onclick="window.location.href='profile.html'">
+                <span>👤</span>
+                <span>wlOkzF7sCEC5</span>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<!-- 主体内容 -->
+<main class="container page">
+    <div class="page-header">
+        <h1 class="page-title">学习路径</h1>
+        <p class="page-desc">根据你的学习阶段，提供结构化的算法学习路线</p>
+    </div>
+
+    <div class="learning-path-container">
+        <!-- 路径选择 -->
+        <div class="path-selector">
+            <div class="path-tab active">零基础入门</div>
+            <div class="path-tab">考研复习</div>
+            <div class="path-tab">算法竞赛</div>
+            <div class="path-tab">求职面试</div>
+        </div>
+
+        <!-- 零基础入门路径 -->
+        <div class="path-timeline">
+            <!-- 节点1 -->
+            <div class="timeline-node">
+                <div class="node-content">
+                    <div class="node-header">
+                        <h3 class="node-title">编程基础</h3>
+                        <span class="node-status status-completed">已完成</span>
+                    </div>
+                    <p class="node-desc">掌握Python/C语言基础语法，变量、数据类型、循环、条件判断、函数等核心概念</p>
+                    <div class="node-actions">
+                        <a href="knowledge.html#basic" class="btn btn-outline">📚 知识点</a>
+                        <a href="online-judge.html" class="btn btn-primary">📝 练习题</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 节点2 -->
+            <div class="timeline-node">
+                <div class="node-content">
+                    <div class="node-header">
+                        <h3 class="node-title">线性表</h3>
+                        <span class="node-status status-completed">已完成</span>
+                    </div>
+                    <p class="node-desc">理解顺序表和链表的原理，掌握增删改查操作，能够分析时间和空间复杂度</p>
+                    <div class="node-actions">
+                        <a href="knowledge.html#linear-list" class="btn btn-outline">📚 知识点</a>
+                        <a href="online-judge.html" class="btn btn-primary">📝 练习题</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 节点3 -->
+            <div class="timeline-node">
+                <div class="node-content">
+                    <div class="node-header">
+                        <h3 class="node-title">栈和队列</h3>
+                        <span class="node-status status-in-progress">学习中</span>
+                    </div>
+                    <p class="node-desc">掌握栈和队列的特性和应用场景，能够用数组和链表实现栈和队列，解决括号匹配、迷宫求解等问题</p>
+                    <div class="node-actions">
+                        <a href="knowledge.html#stack" class="btn btn-outline">📚 知识点</a>
+                        <a href="online-judge.html" class="btn btn-primary">📝 练习题</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 节点4 -->
+            <div class="timeline-node">
+                <div class="node-content">
+                    <div class="node-header">
+                        <h3 class="node-title">字符串</h3>
+                        <span class="node-status status-not-started">未开始</span>
+                    </div>
+                    <p class="node-desc">掌握字符串匹配算法，包括暴力匹配、KMP算法，能够处理字符串的各种操作</p>
+                    <div class="node-actions">
+                        <a href="knowledge.html#string" class="btn btn-outline">📚 知识点</a>
+                        <a href="online-judge.html" class="btn btn-primary">📝 练习题</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 节点5 -->
+            <div class="timeline-node">
+                <div class="node-content">
+                    <div class="node-header">
+                        <h3 class="node-title">树和二叉树</h3>
+                        <span class="node-status status-not-started">未开始</span>
+                    </div>
+                    <p class="node-desc">理解树的基本概念，掌握二叉树的遍历方式，能够实现二叉排序树、平衡二叉树等</p>
+                    <div class="node-actions">
+                        <a href="knowledge.html#binary-tree" class="btn btn-outline">📚 知识点</a>
+                        <a href="online-judge.html" class="btn btn-primary">📝 练习题</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 节点6 -->
+            <div class="timeline-node">
+                <div class="node-content">
+                    <div class="node-header">
+                        <h3 class="node-title">图</h3>
+                        <span class="node-status status-not-started">未开始</span>
+                    </div>
+                    <p class="node-desc">掌握图的存储方式，DFS/BFS遍历，最短路径算法，最小生成树等</p>
+                    <div class="node-actions">
+                        <a href="knowledge.html#graph" class="btn btn-outline">📚 知识点</a>
+                        <a href="online-judge.html" class="btn btn-primary">📝 练习题</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 节点7 -->
+            <div class="timeline-node">
+                <div class="node-content">
+                    <div class="node-header">
+                        <h3 class="node-title">排序和查找</h3>
+                        <span class="node-status status-not-started">未开始</span>
+                    </div>
+                    <p class="node-desc">掌握常见排序算法（冒泡、选择、插入、快速、归并、堆排序）和查找算法（顺序、二分、哈希）</p>
+                    <div class="node-actions">
+                        <a href="knowledge.html#sort" class="btn btn-outline">📚 知识点</a>
+                        <a href="online-judge.html" class="btn btn-primary">📝 练习题</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- 页脚 -->
+<footer class="footer">
+    <div class="container footer-content">
+        <div class="footer-logo">
+            <div class="logo-icon">GM</div>
+            <div class="footer-logo-text">give me</div>
+        </div>
+
+        <div class="footer-links">
+            <a href="help.html" class="footer-link">使用帮助</a>
+            <a href="#" class="footer-link">用户协议</a>
+            <a href="#" class="footer-link">隐私政策</a>
+            <a href="community.html" class="footer-link">联系我们</a>
+        </div>
+
+        <div class="footer-copyright">
+            © 2025 give me 算法可视化平台 版权所有
+        </div>
+    </div>
+</footer>
+
+<script src="js/common.js"></script>
+<script src="js/progress.js"></script>
+</body>
+</html>
