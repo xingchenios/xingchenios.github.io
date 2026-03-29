@@ -229,6 +229,7 @@
         }
     </style>
 </head>
+
 <body>
 <!-- 顶部导航栏（和首页完全一致） -->
 <header class="header">
@@ -412,5 +413,43 @@
       });
     });
 </script>
+
+<!-- Dify官方悬浮智能体（所有人可访问） -->
+<script>
+    window.difyChatbotConfig = {
+      token: '1b0y0qPTU7qGVaxA',
+      baseUrl: 'https://api.dify.ai',
+      inputs: {},
+      systemVariables: {},
+      userVariables: {},
+      welcomeMessage: '你好！我是算法智能助手，有任何数据结构相关问题都可以问我～'
+    }
+</script>
+<script
+        src="https://api.dify.ai/embed.min.js"
+        id="1b0y0qPTU7qGVaxA"
+        defer>
+</script>
+
+<style>
+    #dify-chatbot-bubble-button {
+      background-color: #4f75e0 !important;
+      bottom: 30px !important;
+      right: 30px !important;
+      width: 60px !important;
+      height: 60px !important;
+      border-radius: 50% !important;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15) !important;
+    }
+    #dify-chatbot-bubble-window {
+      width: 380px !important;
+      height: 600px !important;
+      right: 30px !important;
+      bottom: 100px !important;
+      border-radius: 10px !important;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06) !important;
+    }
+</style>
+
 </body>
 </html>
