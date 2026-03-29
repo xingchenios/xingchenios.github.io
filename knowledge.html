@@ -844,17 +844,45 @@ if __name__ == "__main__":
     </div>
 </main>
 
-<!-- Dify 悬浮按钮（已补全，部署后自动显示） -->
+<!-- Dify 悬浮按钮（最终修复版，解决404/跨域/遮挡） -->
 <script>
+    // 1. 配置（必须在脚本加载前定义）
     window.difyChatbotConfig = {
-      token: '1b0y0qPTU7sGVaxA',
+      token: '1b0y0qPTU7sGVaxA', // 保持你自己的token不变
       baseUrl: 'https://api.dify.ai',
       welcomeMessage: '你好！有任何知识点问题都可以问我～'
-    }
+    };
+
+    // 2. 手动创建脚本，解决跨域+加载顺序
+    const script = document.createElement('script');
+    script.src = 'https://api.dify.ai/v1/embed.min.js';
+    script.id = '1b0y0qPTU7sGVaxA'; // 必须和token完全一致
+    script.crossOrigin = 'anonymous'; // 解决GitHub Pages跨域拦截
+    document.body.appendChild(script); // 把脚本插入页面执行
 </script>
-<script src="https://api.dify.ai/v1/embed.min.js" id="1b0y0qPTU7sGVaxA" defer></script>
+
+<!-- 3. 强制样式，确保不被遮挡、层级最高 -->
 <style>
-    #dify-chatbot-bubble-button { z-index:9999!important; bottom:30px; right:30px; width:60px; height:60px; border-radius:50%; background:#4f75e0; }
+    #dify-chatbot-bubble-button,
+    #dify-chatbot-container {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      position: fixed !important;
+      z-index: 999999 !important;
+      bottom: 30px !important;
+      right: 30px !important;
+      width: 60px !important;
+      height: 60px !important;
+      border-radius: 50% !important;
+      background: #4f75e0 !important;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+    }
+    /* 修复上级transform导致fixed定位失效的问题 */
+    body > * {
+      transform: none !important;
+    }
 </style>
+
 </body>
 </html>
