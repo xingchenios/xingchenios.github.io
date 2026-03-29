@@ -4,7 +4,252 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>知识点讲解 - give me</title>
-    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* 全局样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft Yahei", "PingFang SC", sans-serif;
+        }
+
+        :root {
+            --primary-color: #4f75e0;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --bg-light: #f5f7fa;
+            --bg-white: #ffffff;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 顶部导航栏 */
+        .header {
+            background-color: var(--bg-white);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-color), #36d1dc);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 600;
+            background: linear-gradient(135deg, var(--primary-color), #36d1dc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 15px;
+            font-weight: 500;
+            padding: 8px 0;
+            position: relative;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-link.active {
+            color: var(--primary-color);
+        }
+
+        .nav-link.active::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background-color: var(--bg-light);
+            border-radius: 24px;
+            cursor: pointer;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* 页面主体 */
+        .page {
+            padding: 60px 0;
+        }
+
+        .page-header {
+            margin-bottom: 40px;
+        }
+
+        .page-title {
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .page-desc {
+            font-size: 16px;
+            color: var(--text-secondary);
+        }
+
+        /* 知识点容器 */
+        .knowledge-container {
+            display: flex;
+            gap: 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* 侧边栏 */
+        .knowledge-sidebar {
+            width: 260px;
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        .sidebar-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+
+        .sidebar-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .sidebar-link {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 15px;
+            padding: 10px 16px;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .sidebar-link:hover {
+            background-color: #f0f4ff;
+            color: var(--primary-color);
+        }
+
+        .sidebar-link.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* 内容区域 */
+        .knowledge-content {
+            flex: 1;
+            background-color: var(--bg-white);
+            border-radius: 10px;
+            box-shadow: var(--shadow-sm);
+            padding: 32px;
+        }
+
+        .content-section {
+            margin-bottom: 48px;
+        }
+
+        .section-subtitle {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--bg-light);
+        }
+
+        .content-text {
+            font-size: 16px;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            line-height: 1.8;
+        }
+
+        .content-note {
+            background-color: #f8fafc;
+            border-left: 4px solid var(--primary-color);
+            padding: 16px;
+            border-radius: 4px;
+            margin: 16px 0;
+        }
+
+        .note-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--primary-color);
+        }
+
+        /* 代码块样式 */
+        .content-code {
+            background-color: #1e293b;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: "Consolas", "Monaco", monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            margin: 16px 0;
+        }
+    </style>
 </head>
 <body>
 <!-- 顶部导航 -->
@@ -139,7 +384,8 @@ if __name__ == "__main__":
     print(arr.find(3))  # 2
 
     arr.delete(1)
-    arr.print_list()  # [1, 3]</pre>
+    arr.print_list()  # [1, 3]
+                </pre>
 
                 <h3 style="margin: 24px 0 16px; font-size: 20px; font-weight: 600;">2. 单链表</h3>
                 <p class="content-text">单链表是一种链式存取的数据结构，用一组地址任意的存储单元存放线性表中的数据元素。链表中的数据是以结点来表示的，每个结点的构成：元素(数据元素的映象) + 指针(指示后继元素存储位置)，元素就是存储数据的存储单元，指针就是连接每个结点的地址数据。</p>
@@ -158,4 +404,457 @@ class LinkedList:
         self.head = None
 
     # 尾部插入
-    def
+    def append(self, val):
+        new_node = ListNode(val)
+        if not self.head:
+            self.head = new_node
+            return
+        current = self.head
+        while current.next:
+            current = current.next
+        current.next = new_node
+
+    # 头部插入
+    def prepend(self, val):
+        new_node = ListNode(val)
+        new_node.next = self.head
+        self.head = new_node
+
+    # 删除指定值的节点
+    def delete(self, val):
+        if not self.head:
+            return
+
+        # 如果头节点就是要删除的节点
+        if self.head.val == val:
+            self.head = self.head.next
+            return
+
+        current = self.head
+        while current.next:
+            if current.next.val == val:
+                current.next = current.next.next
+                return
+            current = current.next
+
+    # 打印链表
+    def print_list(self):
+        current = self.head
+        while current:
+            print(current.val, end=" -> ")
+            current = current.next
+        print("None")
+
+# 使用示例
+if __name__ == "__main__":
+    ll = LinkedList()
+    ll.append(1)
+    ll.append(2)
+    ll.append(3)
+    ll.print_list()  # 1 -> 2 -> 3 -> None
+
+    ll.prepend(0)
+    ll.print_list()  # 0 -> 1 -> 2 -> 3 -> None
+
+    ll.delete(2)
+    ll.print_list()  # 0 -> 1 -> 3 -> None
+                </pre>
+            </section>
+
+            <!-- 栈和队列 -->
+            <section id="stack" class="content-section">
+                <h2 class="section-subtitle">栈和队列</h2>
+                <p class="content-text">栈（Stack）是一种后进先出（LIFO）的线性表，只允许在表的一端进行插入和删除操作；队列（Queue）是一种先进先出（FIFO）的线性表，只允许在表的一端插入，另一端删除。</p>
+
+                <h3 style="margin: 24px 0 16px; font-size: 20px; font-weight: 600;">1. 栈的实现（Python）</h3>
+                <pre class="content-code">
+# 栈的实现
+class Stack:
+    def __init__(self):
+        self.items = []
+
+    # 判断栈是否为空
+    def is_empty(self):
+        return len(self.items) == 0
+
+    # 入栈
+    def push(self, item):
+        self.items.append(item)
+
+    # 出栈
+    def pop(self):
+        if not self.is_empty():
+            return self.items.pop()
+        raise IndexError("栈为空，无法出栈")
+
+    # 获取栈顶元素
+    def peek(self):
+        if not self.is_empty():
+            return self.items[-1]
+        raise IndexError("栈为空，无栈顶元素")
+
+    # 获取栈的大小
+    def size(self):
+        return len(self.items)
+
+# 使用示例
+if __name__ == "__main__":
+    stack = Stack()
+    stack.push(1)
+    stack.push(2)
+    stack.push(3)
+    print(stack.peek())  # 3
+    print(stack.pop())   # 3
+    print(stack.size())  # 2
+    print(stack.is_empty())  # False
+                </pre>
+
+                <h3 style="margin: 24px 0 16px; font-size: 20px; font-weight: 600;">2. 队列的实现（Python）</h3>
+                <pre class="content-code">
+# 队列的实现
+class Queue:
+    def __init__(self):
+        self.items = []
+
+    # 判断队列是否为空
+    def is_empty(self):
+        return len(self.items) == 0
+
+    # 入队
+    def enqueue(self, item):
+        self.items.insert(0, item)
+
+    # 出队
+    def dequeue(self):
+        if not self.is_empty():
+            return self.items.pop()
+        raise IndexError("队列为空，无法出队")
+
+    # 获取队列大小
+    def size(self):
+        return len(self.items)
+
+# 使用示例
+if __name__ == "__main__":
+    queue = Queue()
+    queue.enqueue(1)
+    queue.enqueue(2)
+    queue.enqueue(3)
+    print(queue.dequeue())  # 1
+    print(queue.size())     # 2
+    print(queue.is_empty()) # False
+                </pre>
+            </section>
+
+            <!-- 字符串 -->
+            <section id="string" class="content-section">
+                <h2 class="section-subtitle">字符串</h2>
+                <p class="content-text">字符串是由零个或多个字符组成的有限序列，是编程中最常用的数据类型之一。字符串的核心操作包括匹配、替换、分割、拼接等。</p>
+
+                <h3 style="margin: 24px 0 16px; font-size: 20px; font-weight: 600;">KMP字符串匹配算法</h3>
+                <pre class="content-code">
+# KMP算法实现
+def kmp_search(text, pattern):
+    # 构建部分匹配表
+    def build_prefix(pattern):
+        prefix = [0] * len(pattern)
+        j = 0
+        for i in range(1, len(pattern)):
+            while j > 0 and pattern[i] != pattern[j]:
+                j = prefix[j-1]
+            if pattern[i] == pattern[j]:
+                j += 1
+                prefix[i] = j
+        return prefix
+
+    prefix = build_prefix(pattern)
+    j = 0  # 模式串指针
+    for i in range(len(text)):
+        while j > 0 and text[i] != pattern[j]:
+            j = prefix[j-1]
+        if text[i] == pattern[j]:
+            j += 1
+        if j == len(pattern):
+            return i - j + 1  # 返回匹配起始位置
+    return -1  # 未匹配到
+
+# 使用示例
+if __name__ == "__main__":
+    text = "ABCABCDABABCDABCDABDE"
+    pattern = "ABCDABD"
+    print(kmp_search(text, pattern))  # 10
+                </pre>
+            </section>
+
+            <!-- 树和二叉树 -->
+            <section id="binary-tree" class="content-section">
+                <h2 class="section-subtitle">树和二叉树</h2>
+                <p class="content-text">二叉树是每个节点最多有两个子树的树结构，通常子树被称作“左子树”和“右子树”。二叉树的遍历是其核心操作，包括前序、中序、后序和层序遍历。</p>
+
+                <h3 style="margin: 24px 0 16px; font-size: 20px; font-weight: 600;">二叉树的遍历实现</h3>
+                <pre class="content-code">
+# 二叉树节点
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+# 二叉树遍历
+class BinaryTree:
+    def __init__(self, root=None):
+        self.root = root
+
+    # 前序遍历（根-左-右）
+    def preorder(self, node, result=None):
+        if result is None:
+            result = []
+        if node:
+            result.append(node.val)
+            self.preorder(node.left, result)
+            self.preorder(node.right, result)
+        return result
+
+    # 中序遍历（左-根-右）
+    def inorder(self, node, result=None):
+        if result is None:
+            result = []
+        if node:
+            self.inorder(node.left, result)
+            result.append(node.val)
+            self.inorder(node.right, result)
+        return result
+
+    # 后序遍历（左-右-根）
+    def postorder(self, node, result=None):
+        if result is None:
+            result = []
+        if node:
+            self.postorder(node.left, result)
+            self.postorder(node.right, result)
+            result.append(node.val)
+        return result
+
+# 使用示例
+if __name__ == "__main__":
+    # 构建二叉树
+    root = TreeNode(1)
+    root.right = TreeNode(2)
+    root.right.left = TreeNode(3)
+
+    bt = BinaryTree(root)
+    print("前序遍历:", bt.preorder(bt.root))  # [1, 2, 3]
+    print("中序遍历:", bt.inorder(bt.root))    # [1, 3, 2]
+    print("后序遍历:", bt.postorder(bt.root))  # [3, 2, 1]
+                </pre>
+            </section>
+
+            <!-- 图 -->
+            <section id="graph" class="content-section">
+                <h2 class="section-subtitle">图</h2>
+                <p class="content-text">图是由顶点集V和边集E组成的一种数据结构，分为有向图和无向图。图的存储方式主要有邻接矩阵和邻接表，遍历方式有深度优先搜索（DFS）和广度优先搜索（BFS）。</p>
+
+                <h3 style="margin: 24px 0 16px; font-size: 20px; font-weight: 600;">图的DFS和BFS实现</h3>
+                <pre class="content-code">
+# 图的邻接表实现
+class Graph:
+    def __init__(self):
+        self.adj_list = {}
+
+    # 添加顶点
+    def add_vertex(self, vertex):
+        if vertex not in self.adj_list:
+            self.adj_list[vertex] = []
+
+    # 添加边
+    def add_edge(self, v1, v2):
+        if v1 in self.adj_list and v2 in self.adj_list:
+            self.adj_list[v1].append(v2)
+            self.adj_list[v2].append(v1)  # 无向图
+
+    # 深度优先搜索
+    def dfs(self, start, visited=None):
+        if visited is None:
+            visited = set()
+        visited.add(start)
+        print(start, end=" ")
+
+        for neighbor in self.adj_list[start]:
+            if neighbor not in visited:
+                self.dfs(neighbor, visited)
+
+    # 广度优先搜索
+    def bfs(self, start):
+        visited = set()
+        queue = [start]
+        visited.add(start)
+
+        while queue:
+            vertex = queue.pop(0)
+            print(vertex, end=" ")
+
+            for neighbor in self.adj_list[vertex]:
+                if neighbor not in visited:
+                    visited.add(neighbor)
+                    queue.append(neighbor)
+
+# 使用示例
+if __name__ == "__main__":
+    g = Graph()
+    vertices = ['A', 'B', 'C', 'D', 'E']
+    for v in vertices:
+        g.add_vertex(v)
+
+    edges = [('A', 'B'), ('A', 'C'), ('B', 'D'), ('C', 'E'), ('D', 'E')]
+    for v1, v2 in edges:
+        g.add_edge(v1, v2)
+
+    print("DFS遍历:")
+    g.dfs('A')  # A B D E C
+    print("\nBFS遍历:")
+    g.bfs('A')  # A B C D E
+                </pre>
+            </section>
+
+            <!-- 排序算法 -->
+            <section id="sort" class="content-section">
+                <h2 class="section-subtitle">排序算法</h2>
+                <p class="content-text">排序算法是将一组数据按照特定顺序排列的算法，常见的有冒泡排序、快速排序、归并排序、堆排序等，不同算法的时间复杂度和空间复杂度差异较大。</p>
+
+                <h3 style="margin: 24px 0 16px; font-size: 20px; font-weight: 600;">快速排序实现</h3>
+                <pre class="content-code">
+# 快速排序
+def quick_sort(arr):
+    if len(arr) <= 1:
+        return arr
+    pivot = arr[len(arr) // 2]
+    left = [x for x in arr if x < pivot]
+    middle = [x for x in arr if x == pivot]
+    right = [x for x in arr if x > pivot]
+    return quick_sort(left) + middle + quick_sort(right)
+
+# 使用示例
+if __name__ == "__main__":
+    arr = [3, 6, 8, 10, 1, 2, 1]
+    print(quick_sort(arr))  # [1, 1, 2, 3, 6, 8, 10]
+                </pre>
+            </section>
+
+            <!-- 查找算法 -->
+            <section id="search" class="content-section">
+                <h2 class="section-subtitle">查找算法</h2>
+                <p class="content-text">查找算法是在一组数据中找到目标元素的算法，常见的有顺序查找、二分查找、哈希查找等，二分查找效率最高但要求数据有序。</p>
+
+                <h3 style="margin: 24px 0 16px; font-size: 20px; font-weight: 600;">二分查找实现</h3>
+                <pre class="content-code">
+# 二分查找（递归版）
+def binary_search_recursive(arr, target, low, high):
+    if low > high:
+        return -1
+    mid = (low + high) // 2
+    if arr[mid] == target:
+        return mid
+    elif arr[mid] > target:
+        return binary_search_recursive(arr, target, low, mid - 1)
+    else:
+        return binary_search_recursive(arr, target, mid + 1, high)
+
+# 二分查找（迭代版）
+def binary_search_iterative(arr, target):
+    low, high = 0, len(arr) - 1
+    while low <= high:
+        mid = (low + high) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] > target:
+            high = mid - 1
+        else:
+            low = mid + 1
+    return -1
+
+# 使用示例
+if __name__ == "__main__":
+    arr = [1, 3, 5, 7, 9, 11, 13]
+    print(binary_search_recursive(arr, 7, 0, len(arr)-1))  # 3
+    print(binary_search_iterative(arr, 9))  # 4
+                </pre>
+            </section>
+
+            <!-- 动态规划 -->
+            <section id="dynamic-programming" class="content-section">
+                <h2 class="section-subtitle">动态规划</h2>
+                <p class="content-text">动态规划是一种将复杂问题分解为子问题求解的算法思想，核心是找到状态转移方程和边界条件，避免重复计算。</p>
+
+                <h3 style="margin: 24px 0 16px; font-size: 20px; font-weight: 600;">斐波那契数列（动态规划版）</h3>
+                <pre class="content-code">
+# 动态规划求解斐波那契数列
+def fibonacci(n):
+    if n <= 0:
+        return 0
+    if n == 1:
+        return 1
+
+    # 初始化dp数组
+    dp = [0] * (n + 1)
+    dp[1] = 1
+
+    # 状态转移
+    for i in range(2, n + 1):
+        dp[i] = dp[i-1] + dp[i-2]
+
+    return dp[n]
+
+# 使用示例
+if __name__ == "__main__":
+    print(fibonacci(10))  # 55
+                </pre>
+            </section>
+
+            <!-- 贪心算法 -->
+            <section id="greedy" class="content-section">
+                <h2 class="section-subtitle">贪心算法</h2>
+                <p class="content-text">贪心算法是在每一步选择中都采取当前状态下最优的选择，从而希望得到全局最优解的算法。贪心算法不能保证一定得到最优解，但在某些问题上效果很好。</p>
+
+                <h3 style="margin: 24px 0 16px; font-size: 20px; font-weight: 600;">零钱兑换（贪心版）</h3>
+                <pre class="content-code">
+# 贪心算法求解零钱兑换（假设硬币面额符合贪心选择性质）
+def coin_change_greedy(coins, amount):
+    # 按面额从大到小排序
+    coins.sort(reverse=True)
+    count = 0
+    remaining = amount
+
+    for coin in coins:
+        if remaining >= coin:
+            num = remaining // coin
+            count += num
+            remaining -= num * coin
+        if remaining == 0:
+            break
+
+    return count if remaining == 0 else -1
+
+# 使用示例
+if __name__ == "__main__":
+    coins = [1, 5, 10, 25]  # 美元硬币
+    print(coin_change_greedy(coins, 67))  # 6
+</pre>
+            </section>
+        </div>
+    </div>
+</main>
+
+<!-- Dify 悬浮按钮（已补全，部署后自动显示） -->
+<script>
+    window.difyChatbotConfig = {
+      token: '1b0y0qPTU7sGVaxA',
+      baseUrl: 'https://api.dify.ai',
+      welcomeMessage: '你好！有任何知识点问题都可以问我～'
+    }
+</script>
+<script src="https://api.dify.ai/embed.min.js" id="1b0y0qPTU7sGVaxA" defer></script>
+<style>
+    #dify-chatbot-bubble-button { z-index:9999!important; bottom:30px; right:30px; width:60px; height:60px; border-radius:50%; background:#4f75e0; }
+</style>
+</body>
+</html>
